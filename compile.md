@@ -14,10 +14,10 @@ Now the script below may work on all platforms providing that both git and the V
 ~~~powershell
 mkdir Tricky
 cd Tricky
-git clone https://github.com/jcr6/JCR6_CSharp.git JCR6
-git clone https://github.com/jcr6/Tricky1975/trickyunits_csharp.git TrickyUnits
-git clone https://github.com/jpbubble/NIL-isn-t-Lua.git Bubble/NIL
-git clone https://github.com/jcr6/NJCR.git NJCR
+git clone "https://github.com/jcr6/JCR6_CSharp.git" JCR6
+git clone "https://github.com/jcr6/Tricky1975/trickyunits_csharp.git" TrickyUnits
+git clone "https://github.com/jpbubble/NIL-isn-t-Lua.git" Bubble/NIL
+git clone "https://github.com/jcr6/NJCR.git" NJCR
 ~~~
 
 Lastly you'll need to have NLua attacked to the NJCR project. Since I've never cloned and compiled other people's projects using NLua, and I just used Visual Studio to import NLua, all I can do is show you the way to go in VS:
