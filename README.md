@@ -28,3 +28,8 @@ Depends per feature. Some parts will require a complete redo... Others will suff
 # License
 
 These tools will be licenced under the GPL 3, the drivers for JCR6 are not part of NJCR... They are only merged in as a dependency, and they will therefore have their own licenses.
+
+
+# WIP
+
+This is still a work in progress... Many features may not work properly.... If they work at all!
