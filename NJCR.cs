@@ -35,13 +35,14 @@ using UseJCR6;
 namespace NJCR {
 
     abstract class FeatBase {
-        readonly public string Description;
+        public string Description { get; protected set; }
         abstract public void Run(FlagParse fp);
+        abstract public void Parse(FlagParse fp);
     }
 
     class NJCR {
 
-        static Dictionary<string, FeatBase> Features = new Dictionary<string, FeatBase>();
+        static SortedDictionary<string, FeatBase> Features = new SortedDictionary<string, FeatBase>();
         static public void Register(string name,FeatBase feature) {
             Features[name] = feature;
         }
@@ -53,6 +54,7 @@ namespace NJCR {
             JCR6_zlib.Init();
             JCR6_jxsrcca.Init();
             Dirry.InitAltDrives();
+            Register("ADD", new F_Add());
         }
 
         static void Head() {
@@ -62,11 +64,29 @@ namespace NJCR {
             QCol.Green("Released under the terms of the GPL3\n\n");
         }
 
+        static void Run(string[] args) {
+            var f = new FlagParse(args);
+            if (args.Length == 0) {
+                QCol.White("\tUsage: ");
+                QCol.Cyan($"{qstr.StripDir(MKL.MyExe)} ");
+                QCol.Green("<command> ");
+                QCol.Yellow("<parameters>\n\n");
+                var tabx = 5;
+                foreach (string k in Features.Keys) { if (k.Length > tabx) tabx = k.Length; }
+                foreach (string k in Features.Keys) {
+                    QCol.Green(k);
+                    for (int i = k.Length; i < tabx + 2; ++i) Console.Write(" ");
+                    QCol.Yellow($"{Features[k].Description}\n");
+                }
+                
+            }
+        }        
+
         static void Main(string[] args) {
             Init();
             Head();
+            Run(args);
             TrickyDebug.AttachWait();
-
         }
     }
 }
