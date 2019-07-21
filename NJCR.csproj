@@ -190,6 +190,7 @@
     <Compile Include="..\TrickyUnits\TrickyDbg.cs">
       <Link>Dependencies\Units\TrickyDbg.cs</Link>
     </Compile>
+    <Compile Include="F_Add.cs" />
     <Compile Include="NJCR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
