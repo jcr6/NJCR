@@ -35,10 +35,16 @@ using UseJCR6;
 namespace NJCR {
 
     abstract class FeatBase {
+        readonly public string Description;
         abstract public void Run(FlagParse fp);
     }
 
     class NJCR {
+
+        static Dictionary<string, FeatBase> Features = new Dictionary<string, FeatBase>();
+        static public void Register(string name,FeatBase feature) {
+            Features[name] = feature;
+        }
 
         static void Init() {
             MKL.Lic    ("NJCR - NJCR.cs","GNU General Public License 3");
