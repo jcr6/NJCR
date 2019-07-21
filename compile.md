@@ -11,7 +11,7 @@ Lastly, you'll need NLua
 My own libraries are dynamically linked into the project. To make sure you got themn all you will need to clone them all from github
 Now the script below may work on all platforms providing that both git and the Visual Studio compilation tools are in your path variable.
 
-~~~powershell
+~~~shell
 mkdir Tricky
 cd Tricky
 git clone "https://github.com/jcr6/JCR6_CSharp.git" JCR6
