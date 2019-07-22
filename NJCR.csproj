@@ -199,6 +199,8 @@
       <Link>Dependencies\Units\TrickyDbg.cs</Link>
     </Compile>
     <Compile Include="F_Add.cs" />
+    <Compile Include="F_Delete.cs" />
+    <Compile Include="F_QU_Help.cs" />
     <Compile Include="NJCR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
