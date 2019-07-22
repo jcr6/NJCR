@@ -11,13 +11,13 @@ Lastly, you'll need NLua
 My own libraries are dynamically linked into the project. To make sure you got themn all you will need to clone them all from github
 Now the script below may work on all platforms providing that both git and the Visual Studio compilation tools are in your path variable.
 
-~~~powershell
+~~~shell
 mkdir Tricky
 cd Tricky
-git clone https://github.com/jcr6/JCR6_CSharp.git JCR6
-git clone https://github.com/jcr6/Tricky1975/trickyunits_csharp.git TrickyUnits
-git clone https://github.com/jpbubble/NIL-isn-t-Lua.git Bubble/NIL
-git clone https://github.com/jcr6/NJCR.git NJCR
+git clone "https://github.com/jcr6/JCR6_CSharp.git" JCR6
+git clone "https://github.com/jcr6/Tricky1975/trickyunits_csharp.git" TrickyUnits
+git clone "https://github.com/jpbubble/NIL-isn-t-Lua.git" Bubble/NIL
+git clone "https://github.com/jcr6/NJCR.git" NJCR
 ~~~
 
 Lastly you'll need to have NLua attacked to the NJCR project. Since I've never cloned and compiled other people's projects using NLua, and I just used Visual Studio to import NLua, all I can do is show you the way to go in VS:
