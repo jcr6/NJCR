@@ -21,8 +21,9 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 19.07.21
+// Version: 19.07.22
 // EndLic
+
 
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,29 @@ namespace NJCR {
         public string Description { get; protected set; }
         abstract public void Run(FlagParse fp);
         abstract public void Parse(FlagParse fp);
+
+
+        /// <summary>
+        /// Removes the first entry since we don't need that at all!
+        /// </summary>
+        /// <param name="fp"></param>
+        /// <returns></returns>
+        protected string[] NonFlags(FlagParse fp,int start=1) {
+            var ret = new List<string>();
+            for (int i = start; i < fp.Args.Length; i++) ret.Add(fp.Args[i]);
+            return ret.ToArray();            
+        }
+
+        protected string[] Files(FlagParse fp) => NonFlags(fp,2);
+        protected string JCRFile(FlagParse fp) {
+            var tmp = NonFlags(fp, 1);
+            if (tmp.Length<1) {
+                QCol.QuickError("No JCR file present");
+                Environment.Exit(2);                
+            }
+            return tmp[0];
+        }
+        
     }
 
     class NJCR {
@@ -49,17 +73,23 @@ namespace NJCR {
 
         static void Init() {
             MKL.Lic    ("NJCR - NJCR.cs","GNU General Public License 3");
-            MKL.Version("NJCR - NJCR.cs","19.07.21");
+            MKL.Version("NJCR - NJCR.cs","19.07.22");
             JCR6_lzma.Init();
             JCR6_zlib.Init();
             JCR6_jxsrcca.Init();
             Dirry.InitAltDrives();
             Register("ADD", new F_Add());
+            Register("DELETE", new F_Delete());
+            Register("QUHELP", new F_QU_Help());
         }
 
         static void Head() {
             QCol.Yellow("NJCR ");
-            QCol.Cyan($"{MKL.Newest}\n");
+            QCol.Cyan($"{MKL.Newest}");
+#if DEBUG
+            QCol.Red("\tDEBUG BUILD!");
+#endif
+            Console.WriteLine();
             QCol.Magenta($"(c) Copyright Jeroen P. Broks {MKL.CYear(2019)}\n");
             QCol.Green("Released under the terms of the GPL3\n\n");
         }
@@ -78,8 +108,19 @@ namespace NJCR {
                     for (int i = k.Length; i < tabx + 2; ++i) Console.Write(" ");
                     QCol.Yellow($"{Features[k].Description}\n");
                 }
-                
+                return;
             }
+            var cmd = args[0].ToUpper();
+            if (!Features.ContainsKey(cmd)) {
+                QCol.QuickError($"Command '{cmd}' has not been understood");
+                return;
+            }
+            Features[cmd].Parse(f);
+            if (!f.Parse()) {
+                QCol.QuickError($"Bad command line input");
+                return;
+            }
+            Features[cmd].Run(f);
         }        
 
         static void Main(string[] args) {
@@ -90,4 +131,5 @@ namespace NJCR {
         }
     }
 }
+
 
