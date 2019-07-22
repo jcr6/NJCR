@@ -38,7 +38,7 @@ namespace NJCR {
         public F_Delete() { Description = "Deletes entries from a JCR file"; }
 
         public override void Parse(FlagParse fp) {
-            throw new NotImplementedException();
+            fp.CrBool("-qu",false);
         }
 
         public override void Run(FlagParse fp) {
