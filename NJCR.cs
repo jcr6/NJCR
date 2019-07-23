@@ -36,7 +36,7 @@ using UseJCR6;
 namespace NJCR {
 
     abstract class FeatBase {
-        public string Description { get; protected set; }
+        public string Description { get; protected set; }        
         abstract public void Run(FlagParse fp);
         abstract public void Parse(FlagParse fp);
 
@@ -77,10 +77,14 @@ namespace NJCR {
             JCR6_lzma.Init();
             JCR6_zlib.Init();
             JCR6_jxsrcca.Init();
+            JCR_JCR5.Init();
+            new JCR6_WAD();
+            new JCR_QuakePack();
             Dirry.InitAltDrives();
             Register("ADD", new F_Add());
             Register("DELETE", new F_Delete());
             Register("QUHELP", new F_QU_Help());
+            QCol.DoingTab = 20;
         }
 
         static void Head() {
