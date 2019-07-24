@@ -83,7 +83,8 @@ namespace NJCR {
             Dirry.InitAltDrives();
             Register("ADD", new F_Add());
             Register("DELETE", new F_Delete());
-            Register("QUHELP", new F_QU_Help());
+            Register("EXTRACT", new F_Extract());
+            //Register("QUHELP", new F_QU_Help());
             QCol.DoingTab = 20;
         }
 

@@ -24,7 +24,6 @@
 // Version: 19.07.22
 // EndLic
 
-
 using System;
 using System.IO;
 using System.Linq;
