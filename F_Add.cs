@@ -252,8 +252,10 @@ namespace NJCR {
                 toadd = l.ToArray();
             }
             updating = File.Exists(jcrfile) && !fp.GetBool("doj");
-            foreach (string fil in toadd) Add2List(fil, qstr.StripDir(fil), compressionmethod, fp.GetString("author"), fp.GetString("notes"));
-                
+            if (toadd.Length == 0)
+                Add2List(Directory.GetCurrentDirectory(), "", compressionmethod, fp.GetString("author"), fp.GetString("notes"));
+            else
+                foreach (string fil in toadd) Add2List(fil, qstr.StripDir(fil), compressionmethod, fp.GetString("author"), fp.GetString("notes"));                
             if (fp.GetString("jif") != "") ParseJIF(fp.GetString("jif"));
             if (updating)
                 QCol.Doing("Updating", jcrfile);
