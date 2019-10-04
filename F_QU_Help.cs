@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 19.07.22
+// Version: 19.10.04
 // EndLic
 
 
@@ -36,7 +36,7 @@ namespace NJCR {
     class F_QU_Help:FeatBase {
         public F_QU_Help() {
             MKL.Lic    ("NJCR - F_QU_Help.cs","GNU General Public License 3");
-            MKL.Version("NJCR - F_QU_Help.cs","19.07.22");
+            MKL.Version("NJCR - F_QU_Help.cs","19.10.04");
             Description = "Provides help about the -qu switch some features use";
         }
         public override void Parse(FlagParse fp) {        }
@@ -56,5 +56,6 @@ namespace NJCR {
         }
     }
 }
+
 
 
