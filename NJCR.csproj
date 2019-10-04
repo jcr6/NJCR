@@ -215,7 +215,7 @@
     <Compile Include="F_Extract.cs" />
     <Compile Include="F_QU_Help.cs" />
     <Compile Include="NJCR.cs" />
-    <Compile Include="N_Type.cs" />
+    <Compile Include="F_Type.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

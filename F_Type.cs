@@ -6,9 +6,9 @@ using UseJCR6;
 using TrickyUnits;
 
 namespace NJCR {
-    class N_Type:FeatBase {
+    class F_Type:FeatBase {
 
-        public N_Type() { Description = "Display content of JCR entry as text"; }
+        public F_Type() { Description = "Display content of JCR entry as text"; }
 
         public override void Parse(FlagParse fp) {
             fp.CrBool("b", false);
