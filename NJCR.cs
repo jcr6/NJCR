@@ -84,6 +84,7 @@ namespace NJCR {
             Register("ADD", new F_Add());
             Register("DELETE", new F_Delete());
             Register("EXTRACT", new F_Extract());
+            Register("TYPE", new N_Type());
             //Register("QUHELP", new F_QU_Help());
             QCol.DoingTab = 20;
         }

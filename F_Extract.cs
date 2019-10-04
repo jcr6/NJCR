@@ -14,6 +14,7 @@ namespace NJCR {
 
         public override void Run(FlagParse fp) {
             if (fp.Args.Length == 1 || fp.GetBool("h")) {
+                QCol.Green("Extract files from a JCR file! Available switches are:\n\n");
                 QCol.Yellow("-nx             "); QCol.Cyan("No eXternals. This means that any file imported from external JCR files will be ignored\n");
                 QCol.Yellow("-ow             "); QCol.Cyan("Overwrite existing files\n");
                 QCol.Yellow("-nodir          "); QCol.Cyan("Remove paths from file names\n");

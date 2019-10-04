@@ -168,6 +168,18 @@
     <Compile Include="..\JCR6\jcr6.cs">
       <Link>Dependencies\JCR6\jcr6.cs</Link>
     </Compile>
+    <Compile Include="..\Kitty\High\KittyHigh.cs">
+      <Link>Dependencies\Kitty\KittyHigh.cs</Link>
+    </Compile>
+    <Compile Include="..\Kitty\High\KittyHighCS.cs">
+      <Link>Dependencies\Kitty\KittyHighCS.cs</Link>
+    </Compile>
+    <Compile Include="..\Kitty\High\KittyHighGINI.cs">
+      <Link>Dependencies\Kitty\KittyHighGINI.cs</Link>
+    </Compile>
+    <Compile Include="..\Kitty\High\KittyHighNIL.cs">
+      <Link>Dependencies\Kitty\KittyHighNIL.cs</Link>
+    </Compile>
     <Compile Include="..\TrickyUnits\Dirry.cs">
       <Link>Dependencies\Units\Dirry.cs</Link>
     </Compile>
@@ -203,6 +215,7 @@
     <Compile Include="F_Extract.cs" />
     <Compile Include="F_QU_Help.cs" />
     <Compile Include="NJCR.cs" />
+    <Compile Include="N_Type.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
