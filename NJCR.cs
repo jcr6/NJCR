@@ -85,6 +85,7 @@ namespace NJCR {
             Register("DELETE", new F_Delete());
             Register("EXTRACT", new F_Extract());
             Register("TYPE", new F_Type());
+            Register("HEX", new F_HEX());
             //Register("QUHELP", new F_QU_Help());
             QCol.DoingTab = 20;
         }
