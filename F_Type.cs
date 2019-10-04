@@ -79,9 +79,16 @@ namespace NJCR {
             }
             KittyHigh.Init();
             new KittyHighCS();
-            new KittyHighGINI();
-            new KittyHighLua();
             new KittyHighNIL();
+            new KittyHighLua();
+            new KittyHighGINI();
+            new KittyBlitzMax();
+            new KittyHighC();
+            new KittyHighPascal();
+            new KittyHighBrainFuck();
+            new KittyHighGo();
+            new KittyHighBlitzBasic();
+            new KittyHighSASKIA();
             var jcr = JCR6.Dir(fp.Args[1]);
             if (jcr==null) {
                 QCol.QuickError(JCR6.JERROR);
