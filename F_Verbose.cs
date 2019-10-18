@@ -31,6 +31,7 @@ namespace NJCR {
             FTypes["ogg"] = "Audio";
             FTypes["gini"] = "Config";
             FTypes["ini"] = "Config";
+            FTypes["ttf"] = "Font";
         }
 
         public override void Parse(FlagParse fp) {
