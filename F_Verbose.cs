@@ -66,7 +66,11 @@ namespace NJCR {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine();
                 }
-
+            }
+            foreach(string name in jcr.Comments.Keys) {
+                QCol.White($"{name}\n");
+                for (int i = 0; i < name.Length; i++) QCol.White("=");
+                QCol.Yellow($"\n{jcr.Comments[name]}\n\n");
             }
 
         }
