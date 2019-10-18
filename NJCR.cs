@@ -86,6 +86,12 @@ namespace NJCR {
             Register("EXTRACT", new F_Extract());
             Register("TYPE", new F_Type());
             Register("HEX", new F_HEX());
+            {
+                var V = new F_Verbose();
+                Register("VIEW", V);
+                Register("LIST", V);
+                Register("VERBOSE", V);
+            }
             //Register("QUHELP", new F_QU_Help());
             QCol.DoingTab = 20;
         }
