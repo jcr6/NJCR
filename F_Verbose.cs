@@ -150,6 +150,18 @@ namespace NJCR {
                 if (ShowAlias) {
                     foreach (string AlFile in jcr.Aliases(ent)) QCol.Doing("\tAlias", AlFile);
                 }
+                if (ShowAllDat) {
+                    foreach(string k in ent.databool.Keys) {
+                        QCol.Magenta("\tbool   "); QCol.Yellow(k); QCol.White(" = "); if (ent.databool[k]) QCol.Green("True\n"); else QCol.Red("False\n");
+                    }
+                    foreach (string k in ent.datastring.Keys) {
+                        QCol.Magenta("\tstring "); QCol.Yellow(k); QCol.White(" = "); QCol.Green($"\"{ent.datastring[k]}\"\n");
+                    }
+                    foreach (string k in ent.dataint.Keys) {
+                        QCol.Magenta("\tint    "); QCol.Yellow(k); QCol.White(" = "); QCol.Cyan($"{ent.dataint[k]}\n");
+                    }
+
+                }
             }
         }
 
