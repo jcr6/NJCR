@@ -24,9 +24,6 @@
 // Version: 19.10.04
 // EndLic
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using TrickyUnits;
 using UseJCR6;
 
