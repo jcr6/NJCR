@@ -55,6 +55,8 @@ namespace NJCR {
             FTypes["gini"] = "Config";
             FTypes["ini"] = "Config";
             FTypes["ttf"] = "Font";
+            FTypes["mydata"] = "Database";
+            FTypes["bubbleproject"] = "Project";
         }
 
         public override void Parse(FlagParse fp) {
@@ -141,6 +143,10 @@ namespace NJCR {
                 XPrint(7, ConsoleColor.Yellow, ent.Storage); WhiteSpace(2);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(ent.Entry);
+                if (ShowXStuff) {
+                    if (ent.Author != "") QCol.Doing("\tAuthor", ent.Author);
+                    if (ent.Notes != "") QCol.Green($"{ent.Notes}\n");
+                }
             }
         }
 
