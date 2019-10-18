@@ -68,7 +68,7 @@ namespace NJCR {
         public override void Run(FlagParse fp) {
             var ShowXStuff = fp.GetBool("x");
             var ShowAlias = fp.GetBool("a");
-            var ShowAlLDat = fp.GetBool("xd");
+            var ShowAllDat = fp.GetBool("xd");
             if (fp.Args.Length==1) {
                 QCol.Green("Verboses the files in a JCR resource:\n\n");
                 QCol.Yellow("-x              "); QCol.Cyan("Show notes and author (if available)\n");
@@ -146,6 +146,9 @@ namespace NJCR {
                 if (ShowXStuff) {
                     if (ent.Author != "") QCol.Doing("\tAuthor", ent.Author);
                     if (ent.Notes != "") QCol.Green($"{ent.Notes}\n");
+                }
+                if (ShowAlias) {
+                    foreach (string AlFile in jcr.Aliases(ent)) QCol.Doing("\tAlias", AlFile);
                 }
             }
         }
