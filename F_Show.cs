@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 19.10.19
+// Version: 19.10.20
 // EndLic
 
 using System;
@@ -112,4 +112,5 @@ namespace NJCR {
         }
     }
 }
+
 
