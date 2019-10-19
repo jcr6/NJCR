@@ -76,7 +76,7 @@ namespace NJCR {
             try {
                 var Ext = qstr.ExtractExt(entry).ToUpper(); if (Ext == "") throw new Exception($"Files without extension cannot be processed: {entry}");
                 Ask($"APP.{Ext}", $"Which application should be used to show .{Ext} files?\nI need to know in order to view {entry}.\nJust a tag for the application, not yet a full line to execute", "Application");
-                Ask($"EXE.{Config.C(Ext)}", $"Now I need the full line to execute the application {Config.C(Ext)}.\nPlease note I will visit the folder where the temp file is located, and you must add {'{'}file{'}'} in the line so NJCR can subsitute that with the file needed","Command line");
+                Ask($"EXE.{Config.C($"APP.{Ext}")}", $"Now I need the full line to execute the application {Config.C($"App.{Ext}")}.\nPlease note I will visit the folder where the temp file is located, and you must add {'{'}file{'}'} in the line so NJCR can subsitute that with the file needed","Command line");
                 QCol.Doing("Extracting", entry);
                 var b = jcr.JCR_B(entry);
                 var tent = qstr.StripDir(entry);
@@ -84,9 +84,9 @@ namespace NJCR {
                 Directory.SetCurrentDirectory(TempFolder);
                 if (b == null) throw new Exception($"JCR ERROR: {JCR6.JERROR}");
                 QuickStream.SaveBytes(tent,b);
-                QuickStream.SaveString("NJCRSHOW.BAT",$"{Config.C($"EXE.{Config.C(Ext)}").Replace("{file}", tent)}");
+                QuickStream.SaveString("NJCRSHOW.BAT", $"{Config.C($"EXE.{Config.C($"APP.{Ext}")}").Replace("{file}", tent)}");
                 // Start the child process.
-                QCol.Doing("Executing", $"{Config.C($"EXE.{Config.C(Ext)}").Replace("{file}", tent)}");
+                QCol.Doing("Executing", $"{Config.C($"EXE.{Config.C($"APP.{Ext}")}").Replace("{file}", tent)}");
                 Process p = new Process();                
                 // Redirect the output stream of the child process.
                 p.StartInfo.UseShellExecute = false;
