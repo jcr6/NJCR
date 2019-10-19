@@ -92,6 +92,7 @@ namespace NJCR {
                 Register("LIST", V);
                 Register("VERBOSE", V);
             }
+            Register("SHOW", new F_Show());
             //Register("QUHELP", new F_QU_Help());
             QCol.DoingTab = 20;
         }

@@ -254,6 +254,7 @@
     <Compile Include="F_Extract.cs" />
     <Compile Include="F_HEX.cs" />
     <Compile Include="F_QU_Help.cs" />
+    <Compile Include="F_Show.cs" />
     <Compile Include="F_Verbose.cs" />
     <Compile Include="NJCR.cs" />
     <Compile Include="F_Type.cs" />
