@@ -35,7 +35,8 @@ namespace NJCR {
     class F_Show:FeatBase {
 
         readonly string ShowConfig = Dirry.C("$AppSupport$/NJCR_Show.GINI");
-        readonly TGINI Config;
+        TGINI Config;
+        string TempFolder => Dirry.AD(Config.C("Temp.Dir"));
 
         public override void Parse(FlagParse fp) {                    }
 
@@ -46,10 +47,14 @@ namespace NJCR {
                 QCol.Green("Don't worry about having to set up this file, manually. You will be prompted whenever NJCR requires more information.\n");
                 QCol.Green($"The configuration can lateron be edited with your favority text editor (as long as it supports Unix LF line ends), as it will be saved as {ShowConfig}");
                 return;
-            }
+            }            
+            QCol.Doing("Reading JCR", fp.Args[1].Replace("\\", "/"));
             var jcr = JCR6.Dir(fp.Args[1]);
             if (jcr==null) { QCol.QuickError(JCR6.JERROR); return; }
             if (!File.Exists(ShowConfig)) QuickStream.SaveString(ShowConfig, "[rem]\nNothint to see here yet\n");
+            Config = GINI.ReadFromFile(ShowConfig);
+            Ask("Temp.Dir", "I am in need of a temp-directory.\nYou can pick any directory you want for this, and the system will try to create the desired directory if it doesn't yet exist.\nThe files to show will be temporarily stored here, and IT'S VERY IMPORTANT THAT THIS DIRECTORY IS ONLY USED FOR THIS PURPOSE!!!", "Temp Folder");
+            QCol.Doing("Temp dir", TempFolder);
             for (int i = 2; i < fp.Args.Length; i++) Show(jcr, fp.Args[i]);
         }
 
