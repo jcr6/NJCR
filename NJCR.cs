@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 19.10.18
+// Version: 19.10.19
 // EndLic
 
 
@@ -73,7 +73,7 @@ namespace NJCR {
 
         static void Init() {
             MKL.Lic    ("NJCR - NJCR.cs","GNU General Public License 3");
-            MKL.Version("NJCR - NJCR.cs","19.10.18");
+            MKL.Version("NJCR - NJCR.cs","19.10.19");
             JCR6_lzma.Init();
             JCR6_zlib.Init();
             JCR6_jxsrcca.Init();
@@ -145,6 +145,7 @@ namespace NJCR {
         }
     }
 }
+
 
 
 
