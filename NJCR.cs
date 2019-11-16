@@ -80,6 +80,7 @@ namespace NJCR {
             JCR_JCR5.Init();
             new JCR6_WAD();
             new JCR_QuakePack();
+            new JCR_a();
             Dirry.InitAltDrives();
             Register("ADD", new F_Add());
             Register("DELETE", new F_Delete());

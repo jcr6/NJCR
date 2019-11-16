@@ -57,6 +57,7 @@ namespace NJCR {
             FTypes["ttf"] = "Font";
             FTypes["mydata"] = "Database";
             FTypes["bubbleproject"] = "Project";
+            FTypes["ps1"] = "PowerShell";
         }
 
         public override void Parse(FlagParse fp) {
@@ -114,13 +115,14 @@ namespace NJCR {
                     Console.WriteLine();
                 }
             }
+            Console.WriteLine();
             // Comments
-            foreach(string name in jcr.Comments.Keys) {
+            foreach (string name in jcr.Comments.Keys) {
                 QCol.White($"{name}\n");
                 for (int i = 0; i < name.Length; i++) QCol.White("=");
                 QCol.Yellow($"\n{jcr.Comments[name]}\n\n");
             }
-
+            Console.WriteLine();
             XPrint(15, ConsoleColor.White, "Kind"); WhiteSpace(2);
             XPrint(10, ConsoleColor.White, "Compressed", Just.Right); WhiteSpace(2);
             XPrint(10, ConsoleColor.White, "Size", Just.Right); WhiteSpace(2);

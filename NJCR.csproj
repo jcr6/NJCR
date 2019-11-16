@@ -168,6 +168,9 @@
     <Compile Include="..\JCR6\Drivers\Compression\zlib\zlib\ZStreamException.cs">
       <Link>Dependencies\JCR6\Drivers\Compression\zlib\zlib\ZStreamException.cs</Link>
     </Compile>
+    <Compile Include="..\JCR6\Drivers\FileTypes\a.cs">
+      <Link>Dependencies\JCR6\Drivers\FileTypes\a.cs</Link>
+    </Compile>
     <Compile Include="..\JCR6\Drivers\FileTypes\JCR5.cs">
       <Link>Dependencies\JCR6\Drivers\FileTypes\JCR5.cs</Link>
     </Compile>
