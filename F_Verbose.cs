@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 19.10.18
+// Version: 19.12.26
 // EndLic
 
 using System;
@@ -58,6 +58,11 @@ namespace NJCR {
             FTypes["mydata"] = "Database";
             FTypes["bubbleproject"] = "Project";
             FTypes["ps1"] = "PowerShell";
+            FTypes["exe"] = "Executable";
+            FTypes["dll"] = "Dyn. Lnk. Lib";
+            FTypes["dylib"] = "Dyn. Lnk. Lib";
+            FTypes["so"] = "Shared Object";
+            FTypes["xml"] = "Ext. Mrkp Lng";
         }
 
         public override void Parse(FlagParse fp) {
@@ -98,10 +103,12 @@ namespace NJCR {
                 XPrint(10, ConsoleColor.White, " ========="); Console.WriteLine();
                 foreach(string k in ResCount.Keys) {
                     var rec = JCR6.Recognize(k);
-                    XPrint(15, ConsoleColor.Blue, JCR6.FileDrivers[rec].name);
-                    XPrint(9, ConsoleColor.Cyan, ResCount[k]);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine($" {k}");
+                    if (rec != "NONE") {
+                        XPrint(15, ConsoleColor.Blue, JCR6.FileDrivers[rec].name);
+                        XPrint(9, ConsoleColor.Cyan, ResCount[k]);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($" {k}");
+                    }
                 }
                 Console.WriteLine();
                 XPrint(20, ConsoleColor.White, "Storage Method");
@@ -202,5 +209,3 @@ namespace NJCR {
 
     }
 }
-
-
