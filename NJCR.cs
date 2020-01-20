@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 19.10.19
+// Version: 19.12.26
 // EndLic
 
 
@@ -73,7 +73,7 @@ namespace NJCR {
 
         static void Init() {
             MKL.Lic    ("NJCR - NJCR.cs","GNU General Public License 3");
-            MKL.Version("NJCR - NJCR.cs","19.10.19");
+            MKL.Version("NJCR - NJCR.cs","19.12.26");
             JCR6_lzma.Init();
             JCR6_zlib.Init();
             JCR6_jxsrcca.Init();
@@ -81,6 +81,7 @@ namespace NJCR {
             new JCR6_WAD();
             new JCR_QuakePack();
             new JCR_a();
+            new JCR_QuickLink();
             Dirry.InitAltDrives();
             Register("ADD", new F_Add());
             Register("DELETE", new F_Delete());
@@ -94,6 +95,8 @@ namespace NJCR {
                 Register("VERBOSE", V);
             }
             Register("SHOW", new F_Show());
+            Register("SCRIPT", new F_Script());
+            Register("SUPPORT", new F_Support());
             //Register("QUHELP", new F_QU_Help());
             QCol.DoingTab = 20;
         }
@@ -146,8 +149,3 @@ namespace NJCR {
         }
     }
 }
-
-
-
-
-
