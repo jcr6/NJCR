@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 19.10.04
+// Version: 19.12.26
 // EndLic
 
 using System;
@@ -43,7 +43,9 @@ namespace NJCR {
         public string TARGET => target.ToUpper();
         public Dictionary<string, bool> xBool = new Dictionary<string, bool>();
         public Dictionary<string, int> xInt = new Dictionary<string, int>();
-        public Dictionary<string, string> xString = new Dictionary<string, string>();
+        public Dictionary<string, string> xString = new Dictionary<string, string>();        
+
+
         
         public Fil2Add(string asource,string atarget,string astorage,string aauthor, string anotes, Dictionary<string,bool> axBool=null, Dictionary<string,int> axInt=null,Dictionary<string,string> axString = null) {
             source = asource.Replace("\\", "/");
@@ -56,25 +58,39 @@ namespace NJCR {
             if (axString != null) xString = axString;
         }
     }
+
+    struct SAlias {
+        readonly public string ori;
+        readonly public string tar;
+        public SAlias(string o,string t) { ori = o; tar = t; }
+    }
+
     class F_Add : FeatBase {
 
         public static F_Add X; // Used to allow the scripter and the converter to run the adding routine internally.
         bool quick = false;
-        bool updating = false;
-        string jcrfile = "";
+        public bool updating = false;
+        public string jcrfile = "";
         string[] toadd = null;
-        string filetablecompression = "";
+        public string filetablecompression = "Store";
         string compressionmethod = "";
         string sig = "";
         bool nomerge = false;
         bool puremerge = false;
         List<Fil2Add> Jiffy = new List<Fil2Add>();
+        //SortedDictionary<string,string> AliasList = new SortedDictionary<string,string>();
+        List<SAlias> AliasList = new List<SAlias>();
+        readonly TMap<string, string> Comments = new TMap<string, string>();
+
+        public void AddComment(string name,string content) { Comments[name] = content; }
 
         void ParseJIF(string jif) {
             throw new Exception("JIF not yet implemented");
         }
 
         void AfterAdd(TJCREntry E,Fil2Add aFile) {
+            if (E == null) QCol.QuickError("Entry = null! Something went wrong!");
+            if (aFile == null) QCol.QuickError("aFile = null! Something went wrong!");
             QCol.Doing("Configuring", "", "\r");
             var deferrors = new List<string>();
             foreach (string vars in aFile.xBool.Keys) {
@@ -124,9 +140,17 @@ namespace NJCR {
             } else {
                 jout = new TJCRCreate(jcrfile, filetablecompression, sig);
             }
+            if (jout==null || jout.mystream==null) {
+                QCol.QuickError($"Error creating JCR file >> {JCR6.JERROR}");
+                return;
+            }
 
             // Add Comments
-            // TODO: Add comments
+            foreach(string n in Comments.Keys) {
+                QCol.Doing("Comment", n);
+                jout.AddComment(n, Comments[n]);
+            }
+            
 
             // Add files
             foreach(Fil2Add aFile in Jiffy) {
@@ -134,8 +158,10 @@ namespace NJCR {
                     if (nomerge || JCR6.Recognize(aFile.source) == "NONE") {
                         QCol.Doing("Adding", aFile.source, "\r");
                         jout.AddFile(aFile.source, aFile.target, aFile.storage, aFile.author, aFile.notes);
+                        //Console.WriteLine("\nBefore AfterAdd\n");
                         var E = jout.Entries[aFile.TARGET];
                         AfterAdd(E, aFile);
+                        //Console.WriteLine("\nAfter AfterAdd\n");
                     } else {
                         QCol.Doing("Merging", aFile.source);
                         var merge = JCR6.Dir(aFile.source);
@@ -158,11 +184,22 @@ namespace NJCR {
                     QCol.Red("     Failed:\n");
                     if (JCR6.JERROR != "") QCol.QuickError($"JCR6: {JCR6.JERROR}");
                     QCol.QuickError($".NET: {crap.Message}");
+#if DEBUG
+                    QCol.Magenta($"{crap.StackTrace}\n\n");
+#endif
                 }
             }
 
-            // Process aliases
-            // TODO: Aliases
+            // Process aliases            
+            //foreach(string ori in AliasList.Keys) {
+            foreach(SAlias SAL in AliasList) { 
+                QCol.Yellow("Alias: ");
+                QCol.Red(SAL.ori);
+                QCol.White(" => ");
+                QCol.Green(SAL.tar);
+                jout.Alias(SAL.ori,SAL.tar);
+                QCol.White("\n");
+            }
 
             // Reorganize Files
             if (updating) {
@@ -199,18 +236,20 @@ namespace NJCR {
             }
         }
 
-            public void Add2List(string ori, string tar, string sto, string aut, string notes) {
+        public void Add2List(string ori, string tar, string sto, string aut, string notes) {
             if (File.Exists(ori)) {
                 Jiffy.Add(new Fil2Add(ori, tar, sto, aut, notes));
             } else if (Directory.Exists(ori)) {
                 var tree = FileList.GetTree(ori);
-                foreach(string fil in tree) {
+                foreach (string fil in tree) {
                     Jiffy.Add(new Fil2Add($"{ori}/{fil}", $"{tar}/{fil}", sto, aut, notes));
                 }
             } else {
                 QCol.QuickError($"Neither a file nor a directory named {ori} found! Will be ignored!");
             }
         }
+
+        public void AddAlias(string ori, string alias) => AliasList.Add(new SAlias(ori, alias)); //AliasList[ori] = alias;
 
         public F_Add() {
             Description = "Creates/Updates JCR file and add/replace files";
@@ -286,6 +325,3 @@ namespace NJCR {
         }
     }
 }
-
-
-
