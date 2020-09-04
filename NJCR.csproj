@@ -201,6 +201,9 @@
     <Compile Include="..\Kitty\High\KittyHighC.cs">
       <Link>Dependencies\Kitty\KittyHighC.cs</Link>
     </Compile>
+    <Compile Include="..\Kitty\High\KittyHighCobra.cs">
+      <Link>Dependencies\Kitty\KittyHighCobra.cs</Link>
+    </Compile>
     <Compile Include="..\Kitty\High\KittyHighCS.cs">
       <Link>Dependencies\Kitty\KittyHighCS.cs</Link>
     </Compile>
@@ -210,14 +213,41 @@
     <Compile Include="..\Kitty\High\KittyHighGo.cs">
       <Link>Dependencies\Kitty\KittyHighGo.cs</Link>
     </Compile>
+    <Compile Include="..\Kitty\High\KittyHighHtml.cs">
+      <Link>Dependencies\Kitty\KittyHighHtml.cs</Link>
+    </Compile>
+    <Compile Include="..\Kitty\High\KittyHighINI.cs">
+      <Link>Dependencies\Kitty\KittyHighINI.cs</Link>
+    </Compile>
+    <Compile Include="..\Kitty\High\KittyHighJava.cs">
+      <Link>Dependencies\Kitty\KittyHighJava.cs</Link>
+    </Compile>
+    <Compile Include="..\Kitty\High\KittyHighJavaScript.cs">
+      <Link>Dependencies\Kitty\KittyHighJavaScript.cs</Link>
+    </Compile>
+    <Compile Include="..\Kitty\High\KittyHighNeil.cs">
+      <Link>Dependencies\Kitty\KittyHighNeil.cs</Link>
+    </Compile>
     <Compile Include="..\Kitty\High\KittyHighNIL.cs">
       <Link>Dependencies\Kitty\KittyHighNIL.cs</Link>
     </Compile>
     <Compile Include="..\Kitty\High\KittyHighPascal.cs">
       <Link>Dependencies\Kitty\KittyHighPascal.cs</Link>
     </Compile>
+    <Compile Include="..\Kitty\High\KittyHighPython.cs">
+      <Link>Dependencies\Kitty\KittyHighPython.cs</Link>
+    </Compile>
     <Compile Include="..\Kitty\High\KittyHighSASKIA.cs">
       <Link>Dependencies\Kitty\KittyHighSASKIA.cs</Link>
+    </Compile>
+    <Compile Include="..\Kitty\High\KittyHighVB.cs">
+      <Link>Dependencies\Kitty\KittyHighVB.cs</Link>
+    </Compile>
+    <Compile Include="..\Kitty\High\KittyHighWhiteSpace.cs">
+      <Link>Dependencies\Kitty\KittyHighWhiteSpace.cs</Link>
+    </Compile>
+    <Compile Include="..\Kitty\High\KittyHighXml.cs">
+      <Link>Dependencies\Kitty\KittyHighXml.cs</Link>
     </Compile>
     <Compile Include="..\Kitty\High\KityHighBlitzMax.cs">
       <Link>Dependencies\Kitty\KityHighBlitzMax.cs</Link>

@@ -48,6 +48,7 @@ namespace NJCR {
             FTypes["saskia"] = "Script";
             FTypes["lua"] = "Script";
             FTypes["nil"] = "Script";
+            FTypes["neil"] = "Script";
             FTypes["py"] = "Script";
             FTypes["wav"] = "Audio";
             FTypes["mp3"] = "Audio";

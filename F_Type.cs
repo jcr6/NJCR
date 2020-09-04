@@ -89,6 +89,15 @@ namespace NJCR {
             new KittyHighGo();
             new KittyHighBlitzBasic();
             new KittyHighSASKIA();
+            new KittyHighPython();
+            new KittyHighHtml();
+            new KittyHighCobra();
+            new KittyHighJava();
+            new KittyHighJavaScript();
+            new KittyHighNeil();
+            new KittyHighVB();
+            new KittyHighWhiteSpace();
+            new KittyHighXml();
             var jcr = JCR6.Dir(fp.Args[1]);
             if (jcr==null) {
                 QCol.QuickError(JCR6.JERROR);
