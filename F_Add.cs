@@ -4,7 +4,7 @@
 // 
 // 
 // 
-// (c) Jeroen P. Broks, 
+// (c) Jeroen P. Broks, 2019
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 19.12.26
+// Version: 20.11.10
 // EndLic
 
 using System;
@@ -266,8 +266,8 @@ namespace NJCR {
                 QCol.Yellow("-jif <file>      "); QCol.Cyan("Read a JCR Instruction File to see how files must be stored and under which conditions\n");
                 QCol.Yellow("-author <author> "); QCol.Cyan("Add an author to the files added (jif files ignore this flag)\n");
                 QCol.Yellow("-notes <notes>   "); QCol.Cyan("Add notes to the files added (jif files ignore this flag)\n");
-                QCol.Yellow("-nomerge         "); QCol.Cyan("When set, files detected as JCR6 compatible files will not be merged, but just be addd as a regular file!");
-                QCol.Yellow("-puremerge       "); QCol.Cyan("When set, entries being added due to JCR-merging will not be repacked, but be directly copied");
+                QCol.Yellow("-nomerge         "); QCol.Cyan("When set, files detected as JCR6 compatible files will not be merged, but just be addd as a regular file!\n");
+                QCol.Yellow("-puremerge       "); QCol.Cyan("When set, entries being added due to JCR-merging will not be repacked, but be directly copied\n");
                 QCol.Yellow("                 "); QCol.Magenta("It goes without saying, but using -nomerge and -puremerge in one run is not a very clever thing to do.");
                 //QCol.Yellow("-qu              "); QCol.Cyan("Quick update. (Type \"NJCR quhelp\" for more information)\n");
                 QCol.Blue("\n\n\n");
