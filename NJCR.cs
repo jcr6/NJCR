@@ -4,7 +4,7 @@
 // 
 // 
 // 
-// (c) Jeroen P. Broks, 
+// (c) Jeroen P. Broks, 2019
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,12 +21,14 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 19.12.26
+// Version: 20.11.10
 // EndLic
 
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,11 +75,12 @@ namespace NJCR {
 
         static void Init() {
             MKL.Lic    ("NJCR - NJCR.cs","GNU General Public License 3");
-            MKL.Version("NJCR - NJCR.cs","19.12.26");
+            MKL.Version("NJCR - NJCR.cs","20.11.10");
             JCR6_lzma.Init();
             JCR6_zlib.Init();
             JCR6_jxsrcca.Init();
             JCR_JCR5.Init();
+            JCR6_JXSDA.Init();
             new JCR6_WAD();
             new JCR_QuakePack();
             new JCR_a();
@@ -110,6 +113,7 @@ namespace NJCR {
             Console.WriteLine();
             QCol.Magenta($"(c) Copyright Jeroen P. Broks {MKL.CYear(2019)}\n");
             QCol.Green("Released under the terms of the GPL3\n\n");
+            Debug.WriteLine(Directory.GetCurrentDirectory());
         }
 
         static void Run(string[] args) {

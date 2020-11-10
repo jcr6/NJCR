@@ -66,6 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\JCR6\Drivers\Compression\jxsda\jcr_jxsda.cs">
+      <Link>Dependencies\JCR6\Drivers\Compression\jxsda\jcr_jxsda.cs</Link>
+    </Compile>
     <Compile Include="..\JCR6\Drivers\Compression\jxsrcca\jcr6_jxsrcca.cs">
       <Link>Dependencies\JCR6\Drivers\Compression\jxsrcca\jcr6_jxsrcca.cs</Link>
     </Compile>
@@ -189,6 +192,9 @@
     <Compile Include="..\JCR6\jcr6.cs">
       <Link>Dependencies\JCR6\jcr6.cs</Link>
     </Compile>
+    <Compile Include="..\JXSDA\JXSDA\JXSDA.cs">
+      <Link>Dependencies\JCR6\Drivers\Compression\jxsda\JXSDA.cs</Link>
+    </Compile>
     <Compile Include="..\Kitty\High\KittyHigh.cs">
       <Link>Dependencies\Kitty\KittyHigh.cs</Link>
     </Compile>
@@ -251,6 +257,9 @@
     </Compile>
     <Compile Include="..\Kitty\High\KityHighBlitzMax.cs">
       <Link>Dependencies\Kitty\KityHighBlitzMax.cs</Link>
+    </Compile>
+    <Compile Include="..\TrickyUnits\BlitzBank.cs">
+      <Link>Dependencies\Units\BlitzBank.cs</Link>
     </Compile>
     <Compile Include="..\TrickyUnits\Dirry.cs">
       <Link>Dependencies\Units\Dirry.cs</Link>
