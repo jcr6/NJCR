@@ -78,6 +78,14 @@ function trueJLS.GetDir(s)
 	return ret
 end
 
+function trueJLS.Import(s)
+	NJCR:AddImport(s)
+end
+
+function trueJLS.Require(a)
+	NJCR:AddRequire(s)
+end
+
 
 JLS = setmetatable({},metaJLS)
 
@@ -85,3 +93,7 @@ Add = JLS.Add
 Alias = JLS.Alias
 AddComment = JLS.AddComment
 GetDir = JLS.GetDir
+AddImport = JLS.Import
+Import = JLS.Import
+AddRequire = JLS.Require
+Require = JLS.Require

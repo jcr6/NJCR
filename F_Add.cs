@@ -40,7 +40,16 @@ namespace NJCR {
         public string storage = "";
         public string author = "";
         public string notes = "";
-        public string TARGET => target.ToUpper();
+        public string TARGET {
+            get {
+                var ret = target.ToUpper().Trim();
+                while (ret[0] == '/') {
+                    ret = ret.Substring(1, ret.Length - 1);
+                    if (ret.Length == 0) break;
+                }
+                return ret;
+            }
+        }
         public Dictionary<string, bool> xBool = new Dictionary<string, bool>();
         public Dictionary<string, int> xInt = new Dictionary<string, int>();
         public Dictionary<string, string> xString = new Dictionary<string, string>();        
@@ -80,6 +89,8 @@ namespace NJCR {
         List<Fil2Add> Jiffy = new List<Fil2Add>();
         //SortedDictionary<string,string> AliasList = new SortedDictionary<string,string>();
         List<SAlias> AliasList = new List<SAlias>();
+        readonly public List<string> Imports = new List<string>();
+        readonly public List<string> Requires = new List<string>();
         readonly TMap<string, string> Comments = new TMap<string, string>();
 
         public void AddComment(string name,string content) { Comments[name] = content; }
@@ -145,20 +156,35 @@ namespace NJCR {
                 return;
             }
 
+
             // Add Comments
             foreach(string n in Comments.Keys) {
                 QCol.Doing("Comment", n);
                 jout.AddComment(n, Comments[n]);
             }
-            
+
+            // Add Dependencies
+            foreach (var d in Imports) {
+                QCol.Doing("Import", d);
+                jout.Import(d);
+            }
+            foreach (var d in Requires) {
+                QCol.Doing("Require", d);
+                jout.Require(d);
+            }
+
+
 
             // Add files
-            foreach(Fil2Add aFile in Jiffy) {
+            foreach (Fil2Add aFile in Jiffy) {
                 try {                    
                     if (nomerge || JCR6.Recognize(aFile.source) == "NONE") {
                         QCol.Doing("Adding", aFile.source, "\r");
                         jout.AddFile(aFile.source, aFile.target, aFile.storage, aFile.author, aFile.notes);
                         //Console.WriteLine("\nBefore AfterAdd\n");
+#if DEBUG
+                        QCol.Doing("TARGET:", $"{aFile.target}=>{aFile.TARGET}");
+#endif
                         var E = jout.Entries[aFile.TARGET];
                         AfterAdd(E, aFile);
                         //Console.WriteLine("\nAfter AfterAdd\n");
@@ -176,7 +202,8 @@ namespace NJCR {
                                 var buf = merge.JCR_B(ent.Entry);
                                 jout.AddBytes(buf, tar, aFile.storage, ent.Author, ent.Notes);
                             }
-                            var E = jout.Entries[tar.ToUpper()];
+                            //var E = jout.Entries[tar.ToUpper()];
+                            var E = jout.LastAddedEntry;
                             AfterAdd(E, aFile);
                         }
                     }

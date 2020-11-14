@@ -94,7 +94,11 @@ namespace NJCR {
         public void AddAlias(string ori, string target) {
             V($"Alias: {ori} => {target}");
             Adder.AddAlias(ori, target);
+            
         }
+
+        public void AddImport(string d) => Adder.Imports.Add(d);
+        public void AddRequire(string d) => Adder.Requires.Add(d);
 
         public void AddComment(string name, string content) => Adder.AddComment(name, content);
         
