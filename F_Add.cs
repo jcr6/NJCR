@@ -258,8 +258,12 @@ namespace NJCR {
             QCol.Doing("Finalizing", jcrfile);
             jout.Close();
             if (updating) {
-                File.Delete(jcrfile);
-                File.Move(temp, jcrfile);
+                try {
+                    File.Delete(jcrfile);
+                    File.Move(temp, jcrfile);
+                } catch ( Exception E) {
+                    QCol.QuickError(E.Message);
+                }
             }
         }
 
