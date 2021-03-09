@@ -189,6 +189,9 @@
     <Compile Include="..\JCR6\Drivers\FileTypes\WAD.cs">
       <Link>Dependencies\JCR6\Drivers\FileTypes\WAD.cs</Link>
     </Compile>
+    <Compile Include="..\JCR6\Drivers\FileTypes\WestwoodPAK.cs">
+      <Link>Dependencies\JCR6\Drivers\FileTypes\WestwoodPAK.cs</Link>
+    </Compile>
     <Compile Include="..\JCR6\jcr6.cs">
       <Link>Dependencies\JCR6\jcr6.cs</Link>
     </Compile>

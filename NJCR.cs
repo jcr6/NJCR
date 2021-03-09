@@ -4,7 +4,7 @@
 // 
 // 
 // 
-// (c) Jeroen P. Broks, 2019
+// (c) Jeroen P. Broks, 2019, 2021
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 20.11.10
+// Version: 21.03.09
 // EndLic
 
 
@@ -75,7 +75,7 @@ namespace NJCR {
 
         static void Init() {
             MKL.Lic    ("NJCR - NJCR.cs","GNU General Public License 3");
-            MKL.Version("NJCR - NJCR.cs","20.11.10");
+            MKL.Version("NJCR - NJCR.cs","21.03.09");
             JCR6_lzma.Init();
             JCR6_zlib.Init();
             JCR6_jxsrcca.Init();
@@ -85,6 +85,7 @@ namespace NJCR {
             new JCR_QuakePack();
             new JCR_a();
             new JCR_QuickLink();
+            new JCR_WestwoodPAK();
             Dirry.InitAltDrives();
             Register("ADD", new F_Add());
             Register("DELETE", new F_Delete());
