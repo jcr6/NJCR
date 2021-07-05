@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 21.03.09
+// Version: 21.07.05
 // EndLic
 
 using System;
@@ -131,6 +131,29 @@ namespace NJCR {
                 for (int i = 0; i < name.Length; i++) QCol.White("=");
                 QCol.Yellow($"\n{jcr.Comments[name]}\n\n");
             }
+            // Blocks (if any)
+            if (jcr.Blocks.Count>0) {
+                Console.WriteLine();
+                XPrint(5, ConsoleColor.White, "Block",Just.Right); WhiteSpace(2);
+                XPrint(10, ConsoleColor.White, "Compressed", Just.Right); WhiteSpace(2);
+                XPrint(10, ConsoleColor.White, "Size", Just.Right); WhiteSpace(2);
+                XPrint(5, ConsoleColor.White, "Ratio", Just.Right); WhiteSpace(2);
+                XPrint(7, ConsoleColor.White, "Storage"); Console.WriteLine();
+                XPrint(5, ConsoleColor.White, "=====", Just.Right); WhiteSpace(2);
+                XPrint(10, ConsoleColor.White, "==========", Just.Right); WhiteSpace(2);
+                XPrint(10, ConsoleColor.White, "====", Just.Right); WhiteSpace(2);
+                XPrint(5, ConsoleColor.White, "=====", Just.Right); WhiteSpace(2);
+                XPrint(7, ConsoleColor.White, "======="); Console.WriteLine();
+                foreach (var B in jcr.Blocks.Values) {
+                    XPrint(5, ConsoleColor.Blue, B.ID); WhiteSpace(2);
+                    XPrint(10, ConsoleColor.Green, B.CompressedSize); WhiteSpace(2);
+                    XPrint(10, ConsoleColor.Red, B.Size); WhiteSpace(2);
+                    XPrint(5, ConsoleColor.Magenta, $"{B.Ratio}%", Just.Right); WhiteSpace(2);
+                    XPrint(7, ConsoleColor.Yellow, B.Storage); Console.WriteLine();
+                }
+
+            }
+            // Entries
             Console.WriteLine();
             XPrint(15, ConsoleColor.White, "Kind"); WhiteSpace(2);
             XPrint(10, ConsoleColor.White, "Compressed", Just.Right); WhiteSpace(2);
@@ -148,9 +171,13 @@ namespace NJCR {
                 Console.BackgroundColor = ConsoleColor.Black;
                 if (ent.MainFile != fp.Args                    [1].Replace("\\", "/")) Console.BackgroundColor = ConsoleColor.DarkBlue;
                 XPrint(15, ConsoleColor.Blue, FTypes[qstr.ExtractExt(ent.Entry).ToLower()]); WhiteSpace(2);
-                XPrint(10, ConsoleColor.Green, ent.CompressedSize); WhiteSpace(2);
+                if (ent.Block == 0)
+                    XPrint(10, ConsoleColor.Green, ent.CompressedSize);
+                else
+                    XPrint(10, ConsoleColor.DarkGreen, $"Block: {ent.Block}");
+                WhiteSpace(2);
                 XPrint(10, ConsoleColor.Red, ent.Size); WhiteSpace(2);
-                XPrint(5, ConsoleColor.Magenta, ent.Ratio, Just.Right); WhiteSpace(2);
+                if (ent.Block == 0) XPrint(5, ConsoleColor.Magenta, ent.Ratio, Just.Right); else XPrint(5,ConsoleColor.Magenta, ""); WhiteSpace(2);
                 XPrint(7, ConsoleColor.Yellow, ent.Storage); WhiteSpace(2);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(ent.Entry);
