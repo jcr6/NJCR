@@ -98,6 +98,7 @@ namespace NJCR {
             new KittyHighVB();
             new KittyHighWhiteSpace();
             new KittyHighXml();
+            new KittyHighINI();
             var jcr = JCR6.Dir(fp.Args[1]);
             if (jcr==null) {
                 QCol.QuickError(JCR6.JERROR);
