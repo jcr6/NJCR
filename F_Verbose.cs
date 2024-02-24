@@ -4,7 +4,7 @@
 // 
 // 
 // 
-// (c) Jeroen P. Broks, 2019, 2021, 2023
+// (c) Jeroen P. Broks, 2019, 2021, 2023, 2024
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.01.22
+// Version: 24.02.24
 // EndLic
 
 using System;
@@ -94,9 +94,16 @@ namespace NJCR {
 			{ // Resources
 				var ResCount = new TMap<string, int>();
 				var CmpCount = new TMap<string, int>();
-				foreach (TJCREntry ent in jcr.Entries.Values) {
-					ResCount[ent.MainFile]++;
-					CmpCount[ent.Storage]++;
+				//foreach (TJCREntry ent in jcr.Entries.Values) {
+				foreach(var _ent in jcr.Entries) {
+					//Console.WriteLine($"Checking {_ent.Key}");
+					try {
+						var ent = jcr.Entries[_ent.Key];
+						ResCount[ent.MainFile]++;
+						CmpCount[ent.Storage]++;
+					} catch (Exception e) {
+						QCol.QuickError($"Bug in .NET??? {e.Message} while checking {_ent.Key}");
+					}
 				}
 				XPrint(15, ConsoleColor.White, "Type");
 				XPrint(9, ConsoleColor.White, "Entries",Just.Right);
@@ -183,7 +190,8 @@ namespace NJCR {
 					XPrint(10, ConsoleColor.DarkGreen, $"Block: {ent.Block}");
 				WhiteSpace(2);
 				XPrint(10, ConsoleColor.Red, ent.Size); WhiteSpace(2);
-				if (ent.Block == 0) XPrint(5, ConsoleColor.Magenta, ent.Ratio, Just.Right); else XPrint(5,ConsoleColor.Magenta, ""); WhiteSpace(2);
+				if (ent.Block == 0) XPrint(5, ConsoleColor.Magenta, ent.Ratio, Just.Right); else XPrint(5,ConsoleColor.Magenta, ""); 
+				WhiteSpace(2);
 				XPrint(7, ConsoleColor.Yellow, ent.Storage); WhiteSpace(2);
 				Console.ForegroundColor = ConsoleColor.White;
 				Console.WriteLine(ent.Entry);
